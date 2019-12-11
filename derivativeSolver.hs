@@ -102,7 +102,7 @@ diff (Quot a b) =
     (Sum (Prod (diff a) (b)) (Prod (Coef (-1.0)) (Prod (a) (diff b))))
     (Prod b b)
 diff (Exp a) = Prod (Exp a) (diff a)
-diff (Log a) = Quot (diff a) (Log a)
+diff (Log a) = Quot (diff a) a
 
 {-
  ! readDiffWrite
@@ -225,8 +225,8 @@ ioDiffLines (currentExpr:exprList) =
   ? Function: diff
   ? Test Case Number: 8
   ? Input: Log (Sum (Prod (X) (X)) (Coef (-1.0)))
-  ? Expected Output: Quot (Sum (Sum (Prod (Coef 1.0) X) (Prod X (Coef 1.0))) (Coef 0.0)) (Log (Sum (Prod X X) (Coef (-1.0))))
-  ? Actual Output: Quot (Sum (Sum (Prod (Coef 1.0) X) (Prod X (Coef 1.0))) (Coef 0.0)) (Log (Sum (Prod X X) (Coef (-1.0))))
+  ? Expected Output: Quot (Sum (Sum (Prod (Coef 1.0) X) (Prod X (Coef 1.0))) (Coef 0.0)) (Sum (Prod X X) (Coef (-1.0)))
+  ? Actual Output: Quot (Sum (Sum (Prod (Coef 1.0) X) (Prod X (Coef 1.0))) (Coef 0.0)) (Sum (Prod X X) (Coef (-1.0)))
 
   ? Function: diff
   ? Test Case Number: 9
@@ -246,8 +246,8 @@ ioDiffLines (currentExpr:exprList) =
   ? Test Case Number: 11
   ? Input: "../test/fileA.txt" "../test/fileB.txt"
   ? Input File Contents: Log (Sum (Prod (X) (X)) (Coef (-1.0)))
-  ? Expected Output File Contents: Quot (Sum X X) (Log (Sum (Prod X X) (Coef (-1.0)))) \n
-  ? Actual Output File Contents: Quot (Sum X X) (Log (Sum (Prod X X) (Coef (-1.0)))) \n
+  ? Expected Output File Contents: Quot (Sum X X) (Sum (Prod X X) (Coef (-1.0))) \n
+  ? Actual Output File Contents: Quot (Sum X X) (Sum (Prod X X) (Coef (-1.0))) \n
 
   ? Function: readDiffWrite
   ? Test Case Number: 12
